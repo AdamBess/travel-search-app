@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "imageUrl": "https://cdn.individualreisen.check24.de/hotel8296183-6827b72749857437932634.jpg/746x360?v=2",
+        "name": "Rixos Sharm El Sheikh - Adults Only 18 Plus",
+        "destination": "Sharm El Sheikh · Ägypten",
+        "hotelTier": 5,
+        "rating": 9.3,
+        "ratingAmount": 116,
+        "duration": 1,
+        "guests": 2,
+        "price": 327
+    },
+    {
+        "id": 2,
+        "imageUrl": "https://cdn.individualreisen.check24.de/hotel5769439-6893d18c55274564918107.jpg/746x360?v=2",
+        "name": "Sunrise Royal Makadi Resort",
+        "destination": "Hurghada · Ägypten",
+        "hotelTier": 5,
+        "rating": 8.9,
+        "ratingAmount": 887,
+        "duration": 1,
+        "guests": 2,
+        "price": 234
+    },
+    {
+        "id": 3,
+        "imageUrl": "https://cdn.individualreisen.check24.de/hotel25197157-666a078f87b9a855587071.jpg/746x360?v=2",
+        "name": "Meraki Resort Sharm El Sheikh Adults only",
+        "destination": "Sharm El Sheikh · Ägypten",
+        "hotelTier": 5,
+        "rating": 9.1,
+        "ratingAmount": 18.098,
+        "duration": 1,
+        "guests": 2,
+        "price": 352
+    },
+    {
+        "id": 4,
+        "imageUrl": "https://cdn.individualreisen.check24.de/hotel26233428-6893d37e1b6ff787278306.jpg/1280x920?v=2",
+        "name": "Secrets La Romana All-Inclusive Adult Only Resort & Spa",
+        "destination": "Bayahibe · Dominikanische Republik",
+        "hotelTier": 6,
+        "rating": 8.4,
+        "ratingAmount": 31,
+        "duration": 1,
+        "guests": 2,
+        "price": 420
+    },
+    {
+        "id": 5,
+        "imageUrl": "https://cdn.individualreisen.check24.de/hotel8930525-6827b74785d8c739525873.jpg/1280x920?v=2",
+        "name": "Safir Dahab Resort",
+        "destination": "Dahab · Ägypten",
+        "hotelTier": 6,
+        "rating": 8.9,
+        "ratingAmount": 22,
+        "duration": 1,
+        "guests": 2,
+        "price": 86
+    },
+    {
+        "id": 6,
+        "imageUrl": "https://cdn.individualreisen.check24.de/hotel6621304-6840c58f74856752987902.jpg/1280x920?v=2",
+        "name": "Ambre - Adults only",
+        "destination": "Belle Mare · Mauritius",
+        "hotelTier": 4,
+        "rating": 8.6,
+        "ratingAmount": 68,
+        "duration": 1,
+        "guests": 2,
+        "price": 164
+    }
+]
