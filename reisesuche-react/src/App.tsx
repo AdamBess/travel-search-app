@@ -2,21 +2,15 @@ import TripList from "./components/TripList/TripList";
 
 function App() {
   return (
-    <>
-      <header>
-        <h1>Reisesuche</h1>
+    <div className="min-h-screen bg-gray-100">
+      <header className="bg-blue-700 text-white py-4 px-6 shadow-md">
+        <h1 className="text-2xl font-bold max-w-7xl mx-auto">Reisesuche</h1>
       </header>
 
-      <main>
-        <div>
-          <div>
-            <TripList />
-          </div>
-        </div>
+      <main className="max-w-7xl mx-auto px-4 py-8">
+        <TripList />
       </main>
-
-      <footer></footer>
-    </>
+    </div>
   );
 }
 

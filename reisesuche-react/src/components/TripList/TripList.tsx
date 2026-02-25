@@ -3,7 +3,7 @@ import type { Trip } from "../../types/Trip.ts";
 
 import { useState, useEffect, type SetStateAction } from "react";
 
-function TripList() {
+export default function TripList() {
   const [trips, setTrips] = useState<Trip[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
 
@@ -17,12 +17,12 @@ function TripList() {
 
   useEffect(() => {
     const fetchTrips = async () => {
-    const response = await fetch('http://localhost:3000/api/trips');
-    const data = await response.json();
-    setTrips(data);
-  }
-  fetchTrips()
-  }, [])
+      const response = await fetch("http://localhost:3000/api/trips");
+      const data = await response.json();
+      setTrips(data);
+    };
+    fetchTrips();
+  }, []);
 
   return (
     <>
@@ -43,5 +43,3 @@ function TripList() {
     </>
   );
 }
-
-export default TripList;

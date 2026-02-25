@@ -1,6 +1,6 @@
 import type { Trip } from "../../types/Trip.ts";
 
-function TripCard({
+export default function TripCard({
   imageUrl,
   name,
   destination,
@@ -22,9 +22,9 @@ function TripCard({
           ></img>
         </div>
         <div className="flex flex-col gap-[10px] p-[15px]">
-          <div className="flex justify-between items-start">
-            <div className="flex flex-col">
-              <h2 className="font-bold text-gray-800 leading-tight">{name}</h2>
+          <div className="flex justify-between items-start gap-3 mb-5">
+            <div className="flex flex-col min-w-0 flex-1 mr-2">
+              <h2 className="text-[18px] font-bold text-[#181818] leading-6 truncate">{name}</h2>
               <span className="text-xs text-gray-500">{destination}</span>
             </div>
             <div className="flex gap-0.5 text-yellow-400 text-xs">
@@ -76,5 +76,3 @@ function getHotelTier(hotelTier: number): string {
   if (hotelTier >= 1) return "★☆☆☆☆";
   return "☆☆☆☆☆";
 }
-
-export default TripCard;
