@@ -1,7 +1,7 @@
 import TripCard from "../TripCard/TripCard";
 import type { Trip } from "../../types/Trip.ts";
 
-import { useState, useEffect, type SetStateAction } from "react";
+import { useState, useEffect} from "react";
 
 export default function TripList() {
   const [trips, setTrips] = useState<Trip[]>([]);
@@ -11,18 +11,14 @@ export default function TripList() {
     setSearchTerm(e.target.value);
   }
 
-  const filteredTrips = trips.filter((trip) =>
-    trip.name.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
-
   useEffect(() => {
     const fetchTrips = async () => {
-      const response = await fetch("http://localhost:3000/api/trips");
+      const response = await fetch(`http://localhost:3000/api/trips?search=${searchTerm}`);
       const data = await response.json();
       setTrips(data);
     };
     fetchTrips();
-  }, []);
+  }, [searchTerm]);
 
   return (
     <>
@@ -36,7 +32,7 @@ export default function TripList() {
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredTrips.map((trip) => (
+        {trips.map((trip) => (
           <TripCard key={trip.id} {...trip}></TripCard>
         ))}
       </div>
