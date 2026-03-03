@@ -1,6 +1,6 @@
-# Reisesuche – Check24 Fullstack Projekt
+# Reisesuche WebApp
 
-Fullstack Travel Search Application mit React Frontend und Express Backend, inspiriert von Check24 Individualreisen.
+Fullstack Travel Search Application mit React Frontend und Express Backend.
 
 ## Tech Stack
 
@@ -14,7 +14,7 @@ Fullstack Travel Search Application mit React Frontend und Express Backend, insp
 
 ## Features
 
-- Responsive Hotel-Karten im Check24-Stil (Grid: 1/2/3 Spalten)
+- Responsive Hotel-Karten (Grid: 1/2/3 Spalten je nach Bildschirmgröße)
 - Echtzeit-Suche mit Server-side Filterung via Query Parameters
 - REST API mit Express 5
 - TypeScript im gesamten Stack
@@ -22,8 +22,8 @@ Fullstack Travel Search Application mit React Frontend und Express Backend, insp
 ## Projektstruktur
 
 ```
-Check24/
-├── reisesuche-react/          # Frontend
+Reisesuche-WebApp/
+├── frontend/                  # React Frontend
 │   └── src/
 │       ├── components/
 │       │   ├── TripCard/      # Hotel-Karte
@@ -34,7 +34,7 @@ Check24/
 │       │   └── trips.json
 │       └── App.tsx
 │
-└── reisesuche-api/            # Backend
+└── backend/                   # Express Backend
     └── src/
         ├── index.ts           # Express Server
         └── data/
@@ -46,7 +46,7 @@ Check24/
 ### Backend starten
 
 ```bash
-cd reisesuche-api
+cd backend
 npm install
 npm run dev
 # Server läuft auf http://localhost:3000
@@ -55,7 +55,7 @@ npm run dev
 ### Frontend starten
 
 ```bash
-cd reisesuche-react
+cd frontend
 npm install
 npm run dev
 # App läuft auf http://localhost:5173
