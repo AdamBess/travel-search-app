@@ -14,21 +14,27 @@ export default function TripList() {
   }
 
   useEffect(() => {
-    const fetchTrips = async () => {
-      try {
-      setIsLoading(true);
-      console.log("Loading trips...")
-      const response = await fetch(`http://localhost:3000/api/trips?search=${searchTerm}`);
-      const data = await response.json();
-      setTrips(data);
-      setIsLoading(false);
-      } catch (error) {
-        setIsLoading(false);
-        setError(error instanceof Error ? error.message : "Unknown error");
-        console.error("Error fetching trips:", error);
-      }
-    };
+    const timer = setTimeout(() => {
+      const fetchTrips = async () => {
+        try {
+          setIsLoading(true);
+          console.log("Loading trips...");
+          const response = await fetch(
+            `http://localhost:3000/api/trips?search=${searchTerm}`,
+          );
+          const data = await response.json();
+          setTrips(data);
+          setIsLoading(false);
+        } catch (error) {
+          setIsLoading(false);
+          setError(error instanceof Error ? error.message : "Unknown error");
+          console.error("Error fetching trips:", error);
+        }
+      };
       fetchTrips();
+    }, 400); // Debounce delay of 400ms
+
+    return () => clearTimeout(timer);
   }, [searchTerm]);
 
   return (
