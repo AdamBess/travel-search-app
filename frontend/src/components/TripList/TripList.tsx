@@ -1,5 +1,5 @@
 import TripCard from "../TripCard/TripCard";
-import type { Trip } from "../../types/Trip.ts";
+import type { Trip } from "../../../../types/Trip.ts";
 
 import { useState, useEffect} from "react";
 

@@ -1,4 +1,4 @@
-import type { Trip } from "../../types/Trip.ts";
+import type { Trip } from "../../../../types/Trip.ts";
 
 export default function TripCard({
   imageUrl,
