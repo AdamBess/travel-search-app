@@ -10,6 +10,7 @@ export default function TripList() {
   const [error, setError] = useState<string | null>(null);
   const [sortOption, setSortOption] = useState<string>("");
   const [sort, order] = sortOption.split("-");
+  const API_URL = import.meta.env.VITE_API_URL;
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchTerm(e.target.value);
@@ -33,7 +34,7 @@ export default function TripList() {
           }
 
           const response = await fetch(
-            `http://localhost:3000/api/trips?${params}`,
+            `${API_URL}/trips?${params}`,
           );
 
           const data = await response.json();
