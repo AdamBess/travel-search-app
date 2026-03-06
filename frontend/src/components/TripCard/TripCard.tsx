@@ -13,7 +13,7 @@ export default function TripCard({
 }: Trip) {
   return (
     <>
-      <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+      <div className="bg-white rounded-lg shadow-md overflow-hidden border border-slate-100">
         <div className="relative aspect-[4/2]">
           <img
             src={imageUrl}
@@ -27,25 +27,25 @@ export default function TripCard({
               <h2 className="text-[18px] font-bold text-[#181818] leading-6 truncate">{name}</h2>
               <span className="text-xs text-gray-500">{destination}</span>
             </div>
-            <div className="flex gap-0.5 text-yellow-400 text-xs">
+            <div className="flex gap-0.5 text-amber-400 text-xs">
               {getHotelTier(hotelTier)}
             </div>
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="bg-blue-600 text-white font-bold px-2 py-1 rounded text-sm">
+            <div className="bg-indigo-600 text-white font-bold px-2 py-1 rounded text-sm">
               {rating}
             </div>
             <div>
-              <p className="text-sm font-bold text-blue-800">
+              <p className="text-sm font-bold text-indigo-900">
                 {getRatingText(rating)}
               </p>
               <p className="text-[10px] text-gray-400">{ratingAmount} ratings</p>
             </div>
           </div>
 
-          <div className="border-t border-gray-100 p-4 flex justify-between items-center bg-gray-50/30">
-            <p className="text-sm text-gray-700">
+          <div className="border-t border-slate-100 p-4 flex justify-between items-center bg-slate-50/30">
+            <p className="text-sm text-slate-700">
               {duration} {duration === 1 ? 'night' : 'nights'} | {guests} {guests === 1 ? 'guest' : 'guests'} from
               <span className="font-bold text-black"> {price} €</span>
             </p>

@@ -61,12 +61,12 @@ export default function TripList() {
           value={searchTerm}
           onChange={handleChange}
           placeholder="Search hotel..."
-          className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm text-gray-700 placeholder-gray-400"
+          className="flex-1 px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent shadow-sm text-slate-700 placeholder-slate-400"
         />
         <select
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
-          className="md:w-1/4 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm text-gray-700"
+          className="md:w-1/4 px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent shadow-sm text-slate-700"
         >
           <option value="">No sorting</option>
           <option value="price-asc">Price: Low to High</option>
@@ -78,7 +78,7 @@ export default function TripList() {
         </select>
       </div>
       {isInitialLoad && (
-        <p className="text-blue-600 font-medium bg-blue-50 border border-blue-200 rounded-lg px-4 py-3 mb-4">
+        <p className="text-indigo-600 font-medium bg-indigo-50 border border-indigo-200 rounded-lg px-4 py-3 mb-4">
           Loading trips...
         </p>
       )}
