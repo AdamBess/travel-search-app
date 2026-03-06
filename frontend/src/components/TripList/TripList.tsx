@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 export default function TripList() {
   const [trips, setTrips] = useState<Trip[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isInitialLoad, setIsInitialLoad] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [sortOption, setSortOption] = useState<string>("");
   const [sort, order] = sortOption.split("-");
@@ -20,7 +20,7 @@ export default function TripList() {
     const timer = setTimeout(() => {
       const fetchTrips = async () => {
         try {
-          setIsLoading(true);
+
           console.log("Loading trips...");
           const params = new URLSearchParams();
 
@@ -39,10 +39,10 @@ export default function TripList() {
 
           const data = await response.json();
           setTrips(data);
-          
-          setIsLoading(false);
+
+          setIsInitialLoad(false);
         } catch (error) {
-          setIsLoading(false);
+
           setError(error instanceof Error ? error.message : "Unknown error");
           console.error("Error fetching trips:", error);
         }
@@ -77,18 +77,18 @@ export default function TripList() {
           <option value="name-desc">Name: Z to A</option>
         </select>
       </div>
-      <div className="mb-4">
-        {isLoading && (
-          <p className="text-blue-600 font-medium bg-blue-50 border border-blue-200 rounded-lg px-4 py-3">
-            Loading trips...
-          </p>
-        )}
-        {error && (
+      {isInitialLoad && (
+        <p className="text-blue-600 font-medium bg-blue-50 border border-blue-200 rounded-lg px-4 py-3 mb-4">
+          Loading trips...
+        </p>
+      )}
+      {error && (
+        <div className="mb-4">
           <p className="text-red-600 font-medium bg-red-50 border border-red-200 rounded-lg px-4 py-3">
             Failed to load trips: {error}
           </p>
-        )}
-      </div>
+        </div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {trips.map((trip) => (
           <TripCard key={trip.id} {...trip}></TripCard>
