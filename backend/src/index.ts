@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
-import trips from "./data/trips.json" with { type: "json" };
-import type { Trip } from "../../types/Trip.ts";
+import { prisma } from "./lib/prisma.js"
 
 const app = express();
 
@@ -10,39 +9,13 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
-app.get("/api/trips", (req, res) => {
-  let result = [...trips];
-  const searchTerm = req.query.search;
-  const sort = req.query.sort;
-  const order = req.query.order || "asc";
-
-  if (searchTerm) {
-    result = result.filter((trip) =>
-      trip.name.toLowerCase().includes(searchTerm.toString().toLowerCase()),
-    );
-  }
-
-  if (sort) {
-    const sortField = sort.toString() as keyof Trip;
-    const multiplier = order === "desc" ? -1 : 1;
-
-    result.sort((a, b) => {
-      const valA = a[sortField];
-      const valB = b[sortField];
-
-      if (typeof valA === "string" && typeof valB === "string") {
-        return multiplier * valA.localeCompare(valB)
-      }
-
-      if (typeof valA === "number" && typeof valB === "number") {
-        return multiplier * (valA - valB);
-      }
-
-      return 0;
-    });
-  }
-
-  res.json(result);
+app.get("/api/trips", async (req, res) => {
+  const { search, sort, order } = req.query
+  const trips = await prisma.trip.findMany({
+    where: search ? { name: { contains: search.toString(), mode: "insensitive"}} : {},
+    orderBy: sort ? {[ sort.toString()] : order } : {},
+  })
+  res.json(trips)
 });
 
 app.listen(PORT, () => {
