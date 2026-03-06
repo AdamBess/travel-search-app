@@ -40,13 +40,13 @@ export default function TripCard({
               <p className="text-sm font-bold text-blue-800">
                 {getRatingText(rating)}
               </p>
-              <p className="text-[10px] text-gray-400">{ratingAmount} Bewertungen</p>
+              <p className="text-[10px] text-gray-400">{ratingAmount} ratings</p>
             </div>
           </div>
 
           <div className="border-t border-gray-100 p-4 flex justify-between items-center bg-gray-50/30">
             <p className="text-sm text-gray-700">
-              {duration} Nacht | {guests} Personen ab
+              {duration} {duration === 1 ? 'night' : 'nights'} | {guests} {guests === 1 ? 'guest' : 'guests'} from
               <span className="font-bold text-black"> {price} €</span>
             </p>
           </div>
@@ -58,13 +58,13 @@ export default function TripCard({
 
 // calculate ratings text
 function getRatingText(rating: number): string {
-  if (rating >= 9.5) return "Hervorragend";
-  if (rating >= 9.0) return "Exzellent";
-  if (rating >= 8.5) return "Sehr gut";
-  if (rating >= 8.0) return "Fabelhaft";
-  if (rating >= 7.0) return "Gut";
-  if (rating >= 5.0) return "Ansprechend";
-  return "Zufriedenstellend";
+  if (rating >= 9.5) return "Exceptional";
+  if (rating >= 9.0) return "Excellent";
+  if (rating >= 8.5) return "Very Good";
+  if (rating >= 8.0) return "Fabulous";
+  if (rating >= 7.0) return "Good";
+  if (rating >= 5.0) return "Pleasant";
+  return "Satisfactory";
 }
 
 // calculate ratings stars

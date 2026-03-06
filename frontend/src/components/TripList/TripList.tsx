@@ -60,7 +60,7 @@ export default function TripList() {
           name="searchInput"
           value={searchTerm}
           onChange={handleChange}
-          placeholder="Hotel suchen..."
+          placeholder="Search hotel..."
           className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm text-gray-700 placeholder-gray-400"
         />
         <select
@@ -68,24 +68,24 @@ export default function TripList() {
           onChange={(e) => setSortOption(e.target.value)}
           className="md:w-1/4 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm text-gray-700"
         >
-          <option value="">Keine Sortierung</option>
-          <option value="price-asc">Preis aufsteigend</option>
-          <option value="price-desc">Preis absteigend</option>
-          <option value="rating-asc">Bewertung aufsteigend</option>
-          <option value="rating-desc">Bewertung absteigend</option>
-          <option value="name-asc">Name aufsteigend</option>
-          <option value="name-desc">Name absteigend</option>
+          <option value="">No sorting</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating-asc">Rating: Low to High</option>
+          <option value="rating-desc">Rating: High to Low</option>
+          <option value="name-asc">Name: A to Z</option>
+          <option value="name-desc">Name: Z to A</option>
         </select>
       </div>
       <div className="mb-4">
         {isLoading && (
           <p className="text-blue-600 font-medium bg-blue-50 border border-blue-200 rounded-lg px-4 py-3">
-            Reisen werden geladen...
+            Loading trips...
           </p>
         )}
         {error && (
           <p className="text-red-600 font-medium bg-red-50 border border-red-200 rounded-lg px-4 py-3">
-            Fehler beim Laden der Reisen: {error}
+            Failed to load trips: {error}
           </p>
         )}
       </div>

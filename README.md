@@ -1,66 +1,66 @@
-# Reisesuche WebApp
+# Travel Search App
 
-Fullstack Travel Search Application mit React Frontend, Express Backend und PostgreSQL Datenbank.
+Fullstack travel search application built with React, Express, and PostgreSQL.
 
 ## Tech Stack
 
-| | Technologie | Version |
+| | Technology | Version |
 |---|---|---|
 | **Frontend** | React + TypeScript | 19.2 |
 | **Build Tool** | Vite | 7.3 |
 | **Styling** | Tailwind CSS | 4.2 |
 | **Backend** | Express.js | 5.2 |
-| **Datenbank** | PostgreSQL | 16 |
+| **Database** | PostgreSQL | 16 |
 | **ORM** | Prisma | 7 |
 | **Runtime** | Node.js + tsx | |
 
 ## Features
 
-- Responsive Hotel-Karten (Grid: 1/2/3 Spalten je nach Bildschirmgröße)
-- Echtzeit-Suche mit Server-side Filterung via Query Parameters
-- Sortierung nach Preis, Bewertung und Name (auf-/absteigend)
-- Debounced Search Input (400ms) zur Reduzierung von API-Calls
-- Error Handling und Loading State
-- PostgreSQL Datenbank mit Prisma ORM
-- Environment Variables für API-URL, Port und Datenbank
-- REST API mit Express 5
-- TypeScript im gesamten Stack (Shared Types)
+- Responsive hotel cards (grid: 1/2/3 columns based on screen size)
+- Real-time search with server-side filtering via query parameters
+- Sorting by price, rating, and name (ascending/descending)
+- Debounced search input (400ms) to reduce API calls
+- Error handling and loading state
+- PostgreSQL database with Prisma ORM
+- Environment variables for API URL, port, and database
+- REST API with Express 5
+- TypeScript across the entire stack (shared types)
 
-## Projektstruktur
+## Project Structure
 
 ```
-Reisesuche-WebApp/
+travel-search-app/
 ├── types/
-│   └── Trip.ts                # Shared TypeScript Interface
+│   └── Trip.ts                # Shared TypeScript interface
 ├── frontend/                  # React Frontend
 │   └── src/
 │       ├── components/
-│       │   ├── TripCard/      # Hotel-Karte
-│       │   └── TripList/      # Listenansicht + Suche + Sortierung
+│       │   ├── TripCard/      # Hotel card component
+│       │   └── TripList/      # List view + search + sorting
 │       └── App.tsx
 │
 └── backend/                   # Express Backend
     ├── prisma/
-    │   ├── schema.prisma      # Datenbank-Schema
-    │   ├── seed.ts            # Seed-Script für Testdaten
-    │   └── migrations/        # SQL Migrations
-    ├── prisma.config.ts       # Prisma Konfiguration
+    │   ├── schema.prisma      # Database schema
+    │   ├── seed.ts            # Seed script for test data
+    │   └── migrations/        # SQL migrations
+    ├── prisma.config.ts       # Prisma configuration
     └── src/
-        ├── index.ts           # Express Server + API
+        ├── index.ts           # Express server + API
         ├── lib/
-        │   └── prisma.ts      # Prisma Client Setup
+        │   └── prisma.ts      # Prisma client setup
         └── data/
-            └── trips.json     # Seed-Daten (30 Hotels)
+            └── trips.json     # Seed data (30 hotels)
 ```
 
 ## Setup
 
-### Voraussetzungen
+### Prerequisites
 
 - Node.js
 - PostgreSQL 16
 
-### Datenbank erstellen
+### Create Database
 
 ```bash
 psql -U postgres
@@ -68,7 +68,7 @@ CREATE DATABASE reisesuche;
 \q
 ```
 
-### Backend starten
+### Start Backend
 
 ```bash
 cd backend
@@ -77,34 +77,34 @@ npx prisma generate
 npx prisma migrate dev
 npx tsx prisma/seed.ts
 npm run dev
-# Server läuft auf http://localhost:3000
+# Server running on http://localhost:3000
 ```
 
-### Frontend starten
+### Start Frontend
 
 ```bash
 cd frontend
 npm install
 npm run dev
-# App läuft auf http://localhost:5173
+# App running on http://localhost:5173
 ```
 
 ## API
 
-| Methode | Endpoint | Parameter | Beschreibung |
-|---------|----------|-----------|--------------|
-| GET | `/api/trips` | `?search=<string>` | Filtert Reisen nach Name |
-| | | `?sort=<field>` | Sortierfeld (`price`, `rating`, `name`) |
-| | | `?order=asc\|desc` | Sortierreihenfolge (Standard: `asc`) |
+| Method | Endpoint | Parameter | Description |
+|--------|----------|-----------|-------------|
+| GET | `/api/trips` | `?search=<string>` | Filter trips by name |
+| | | `?sort=<field>` | Sort field (`price`, `rating`, `name`) |
+| | | `?order=asc\|desc` | Sort order (default: `asc`) |
 
-**Beispiele:**
+**Examples:**
 ```
 GET http://localhost:3000/api/trips?search=resort
 GET http://localhost:3000/api/trips?sort=price&order=desc
 GET http://localhost:3000/api/trips?search=beach&sort=rating&order=desc
 ```
 
-## Datenmodell
+## Data Model
 
 ```typescript
 interface Trip {
@@ -134,13 +134,13 @@ DATABASE_URL="postgresql://postgres:postgres@localhost:5432/reisesuche"
 VITE_API_URL=http://localhost:3000/api
 ```
 
-## Architektur
+## Architecture
 
 ```
-┌──────────────────┐  GET /api/trips?search=...&sort=...  ┌──────────────────┐  SQL Queries   ┌──────────────────┐
-│                  │ ────────────────────────────────────►│                  │ ─────────────► │                  │
-│  React Frontend  │                                      │ Express Backend  │                │   PostgreSQL     │
-│  localhost:5173  │ ◄────────────────────────────────────│ localhost:3000   │ ◄───────────── │   localhost:5432 │
-│                  │          JSON Response               │ + Prisma ORM     │   Query Result │                  │
-└──────────────────┘                                      └──────────────────┘                └──────────────────┘
+┌──────────────────┐  GET /api/trips?search=...&sort=...  ┌──────────────────┐  SQL Queries  ┌──────────────────┐
+│                  │ ────────────────────────────────────►│                  │ ─────────────►│                  │
+│  React Frontend  │                                      │  Express Backend │               │   PostgreSQL     │
+│  localhost:5173  │ ◄────────────────────────────────────│  localhost:3000  │ ◄─────────────│   localhost:5432 │
+│                  │          JSON Response               │  + Prisma ORM    │  Query Result │                  │
+└──────────────────┘                                      └──────────────────┘               └──────────────────┘
 ```
