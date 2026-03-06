@@ -13,8 +13,8 @@ export default function TripCard({
 }: Trip) {
   return (
     <>
-      <div className="max-w-sm bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
-        <div className="relative h-48">
+      <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+        <div className="relative aspect-[4/2]">
           <img
             src={imageUrl}
             className="w-full h-full object-cover"
