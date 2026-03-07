@@ -2,6 +2,8 @@
 
 Fullstack travel search application built with React, Express, and PostgreSQL.
 
+<img width="1474" height="1304" alt="travelsearch" src="https://github.com/user-attachments/assets/43a856d4-6deb-49e5-ae96-3fd68a88c18d" />
+
 ## Tech Stack
 
 | | Technology | Version |
