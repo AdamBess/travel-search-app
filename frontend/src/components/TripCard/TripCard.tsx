@@ -12,47 +12,47 @@ export default function TripCard({
   price,
 }: Trip) {
   return (
-    <>
-      <div className="bg-white rounded-lg shadow-md overflow-hidden border border-slate-100">
-        <div className="relative aspect-[4/2]">
-          <img
-            src={imageUrl}
-            className="w-full h-full object-cover"
-            alt="Reiseziel"
-          ></img>
-        </div>
-        <div className="flex flex-col gap-[10px] p-[15px]">
-          <div className="flex justify-between items-start gap-3 mb-5">
-            <div className="flex flex-col min-w-0 flex-1 mr-2">
-              <h2 className="text-[18px] font-bold text-[#181818] leading-6 truncate">{name}</h2>
-              <span className="text-xs text-gray-500">{destination}</span>
-            </div>
-            <div className="flex gap-0.5 text-amber-400 text-xs">
-              {getHotelTier(hotelTier)}
-            </div>
-          </div>
+    <article className="bg-white rounded-lg shadow-md overflow-hidden border border-slate-300 flex flex-col">
+      {/* Image Header */}
+      <img
+        src={imageUrl}
+        className="w-full aspect-[4/2] object-cover"
+        alt={`Impressions of ${destination}`}
+      />
 
-          <div className="flex items-center gap-3">
-            <div className="bg-indigo-600 text-white font-bold px-2 py-1 rounded text-sm">
-              {rating}
-            </div>
-            <div>
-              <p className="text-sm font-bold text-indigo-900">
-                {getRatingText(rating)}
-              </p>
-              <p className="text-[10px] text-gray-400">{ratingAmount} ratings</p>
-            </div>
+      {/* Content Body */}
+      <div className="flex flex-col gap-[10px] p-[15px] flex-grow">
+        <header className="flex justify-between items-start gap-3 mb-5">
+          <div className="flex flex-col min-w-0 flex-1">
+            <h2 className="text-[18px] font-bold text-[#181818] leading-6 truncate">{name}</h2>
+            <address className="text-xs text-gray-500 not-italic">{destination}</address>
           </div>
+          <div className="flex gap-0.5 text-amber-400 text-xs" aria-label={`${hotelTier} stars`}>
+            {getHotelTier(hotelTier)}
+          </div>
+        </header>
 
-          <div className="border-t border-slate-100 p-4 flex justify-between items-center bg-slate-50/30">
-            <p className="text-sm text-slate-700">
-              {duration} {duration === 1 ? 'night' : 'nights'} | {guests} {guests === 1 ? 'guest' : 'guests'} from
-              <span className="font-bold text-black"> {price} €</span>
+        <section className="flex items-center gap-3">
+          <div className="bg-indigo-600 text-white font-bold px-2 py-1 rounded text-sm">
+            {rating}
+          </div>
+          <div>
+            <p className="text-sm font-bold text-indigo-900">
+              {getRatingText(rating)}
             </p>
+            <p className="text-[10px] text-gray-400">{ratingAmount} ratings</p>
           </div>
-        </div>
+        </section>
       </div>
-    </>
+
+      {/* Pricing Footer */}
+      <footer className="border-t border-slate-300 p-4 flex justify-between items-center bg-slate-50/30">
+        <p className="text-sm text-slate-700">
+          {duration} {duration === 1 ? 'night' : 'nights'} | {guests} {guests === 1 ? 'guest' : 'guests'} from 
+          <span className="font-bold text-black"> €{price}</span>
+        </p>
+      </footer>
+    </article>
   );
 }
 
