@@ -42,7 +42,7 @@ export default function TripList() {
 
           setIsInitialLoad(false);
         } catch (error) {
-
+          setIsInitialLoad(false);
           setError(error instanceof Error ? error.message : "Unknown error");
           console.error("Error fetching trips:", error);
         }

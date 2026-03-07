@@ -1,5 +1,5 @@
 import { prisma } from '../src/lib/prisma.js'
-import trips from '../src/data/trips.json' with { type: "json" };
+import trips from './trips.json' with { type: "json" };
 
 const tripsWithoutId = trips.map(({ id, ...rest }) => rest);
 
