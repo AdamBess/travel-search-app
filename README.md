@@ -138,11 +138,10 @@ VITE_API_URL=http://localhost:3000/api
 
 ## Architecture
 
-```
-┌──────────────────┐  GET /api/trips?search=...&sort=...  ┌──────────────────┐  SQL Queries  ┌──────────────────┐
-│                  │ ────────────────────────────────────►│                  │ ─────────────►│                  │
-│  React Frontend  │                                      │  Express Backend │               │   PostgreSQL     │
-│  localhost:5173  │ ◄────────────────────────────────────│  localhost:3000  │ ◄─────────────│   localhost:5432 │
-│                  │          JSON Response               │  + Prisma ORM    │  Query Result │                  │
-└──────────────────┘                                      └──────────────────┘               └──────────────────┘
+```mermaid
+graph LR
+    A["React Frontend<br>localhost:5173"] -->|"GET /api/trips?search=...&sort=..."| B["Express Backend<br>localhost:3000<br>+ Prisma ORM"]
+    B -->|"JSON Response"| A
+    B -->|"SQL Queries"| C["PostgreSQL<br>localhost:5432"]
+    C -->|"Query Result"| B
 ```
