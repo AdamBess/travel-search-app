@@ -108,9 +108,14 @@ GET /api/trips?search=beach&sort=rating&order=desc
    \q
    ```
 
-3. Start the backend
+3. Set up environment variables
    ```bash
    cd backend
+   cp .env.example .env
+   ```
+
+4. Start the backend
+   ```bash
    npm install
    npx prisma generate
    npx prisma migrate dev
@@ -119,7 +124,7 @@ GET /api/trips?search=beach&sort=rating&order=desc
    # Server running on http://localhost:3000
    ```
 
-4. Start the frontend
+5. Start the frontend
    ```bash
    cd frontend
    npm install
