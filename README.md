@@ -110,12 +110,13 @@ GET /api/trips?search=beach&sort=rating&order=desc
 
 3. Set up environment variables
    ```bash
-   cd backend
-   cp .env.example .env
+   cp backend/.env.example backend/.env
+   cp frontend/.env.example frontend/.env
    ```
 
 4. Start the backend
    ```bash
+   cd backend
    npm install
    npx prisma generate
    npx prisma migrate dev
